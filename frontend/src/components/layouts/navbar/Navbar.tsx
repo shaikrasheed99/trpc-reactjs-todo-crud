@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import classes from './navbar.module.css';
-import Modal from '../../pages/popUp/Modal';
+import Modal from '../../pages/addTodoPopup/AddTodoPopup';
 
 function Navbar(): JSX.Element {
     const [isPopupOpen, setIsPopupOpen] = useState(false);

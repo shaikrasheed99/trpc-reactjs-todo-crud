@@ -1,8 +1,8 @@
 import classes from './todo.module.css';
-import highPriorityIcon from '../../../asserts/icons/high.png';
-import mediumPriorityIcon from '../../../asserts/icons/medium.png';
-import lowPriorityIcon from '../../../asserts/icons/low.png';
-import deleteIcon from '../../../asserts/icons/delete.png';
+import highPriorityIcon from '../../../assets/icons/high.png';
+import mediumPriorityIcon from '../../../assets/icons/medium.png';
+import lowPriorityIcon from '../../../assets/icons/low.png';
+import deleteIcon from '../../../assets/icons/delete.png';
 import { ITodo, Priority } from '../types';
 
 interface TodoProps {

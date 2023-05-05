@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import PriorityDropdown from '../priorityDropdown/PriorityDropdown';
 import classes from './addTodoPopup.module.css';
-import closeIcon from '../../../asserts/icons/cross.png';
+import closeIcon from '../../../assets/icons/cross.png';
 import { Priority } from '../types';
 import useTodo from '../hooks/useTodo';
 

@@ -1,6 +1,6 @@
-import highPriorityIcon from '../../../asserts/icons/high.png';
-import mediumPriorityIcon from '../../../asserts/icons/medium.png';
-import lowPriorityIcon from '../../../asserts/icons/low.png';
+import highPriorityIcon from '../../../assets/icons/high.png';
+import mediumPriorityIcon from '../../../assets/icons/medium.png';
+import lowPriorityIcon from '../../../assets/icons/low.png';
 import classes from './priorityDropdown.module.css';
 import { useState } from 'react';
 import { Priority } from '../types';
