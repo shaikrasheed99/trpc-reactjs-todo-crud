@@ -5,6 +5,12 @@
     },
     "overrides": [
     ],
+    "extends": [
+        "prettier"
+    ],
+    "plugins": [
+        "prettier"
+    ],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
