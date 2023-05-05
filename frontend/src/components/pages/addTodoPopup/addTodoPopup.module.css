@@ -1,0 +1,92 @@
+.modal {
+    width: 100%;
+
+    position: fixed;
+    left: 30%;
+    top: 25%;
+    bottom: 25%;
+    right: 25%;
+}
+
+.modal .overlay {
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    background-color: #000000;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.modal .content {
+    width: 20vw;
+    padding: 1vw 2vw;
+    position: relative;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    border-radius: 2vw;
+    background-color: gray;
+}
+
+.modal .close {
+    background-color: lightslategrey;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 0.5vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: -4%;
+    left: 92%;
+}
+
+.modal .closeIcon {
+    width: 1.5vw;
+    height: 1.5vw;
+    cursor: pointer;
+}
+
+.modal .content .header {
+    padding-bottom: 0.5vw;
+    border-bottom: 1px solid black;
+}
+
+.modal .content .textInput {
+    display: block;
+    width: 20vw;
+    background-color: darkslategray;
+    color: #ffffff;
+
+    box-sizing: border-box;
+    outline: none;
+
+    font-size: 1vw;
+    margin: 0.5vw 0 0 0;
+    padding: 0.5vw 1vw;
+    border: 0;
+    border-radius: 1vw;
+}
+
+.modal .content .priority {
+    display: flex;
+    justify-content: center;
+}
+
+.modal .content .button {
+    padding: 1vw;
+    text-align: center;
+}
+
+.modal .content .button > * {
+    border: 0;
+    font-size: 1vw;
+    border-radius: 2vw;
+    padding: 0.5vw 1vw;
+    outline: none;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+}
