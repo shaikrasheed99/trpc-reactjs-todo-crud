@@ -1,0 +1,7 @@
+.todoList {
+    margin-top: 2vw;
+    height: 90vh;
+    box-sizing: border-box;
+    max-height: 72vh;
+    overflow-x: scroll;
+}
