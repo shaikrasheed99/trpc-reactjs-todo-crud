@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ITodo, Priority } from '../types';
 
 const defaultTodos: ITodo[] = [
@@ -42,10 +43,6 @@ const defaultTodos: ITodo[] = [
 
 const useTodo = () => {
     const [todos, setTodos] = useState<ITodo[]>(defaultTodos);
-
-    useEffect(() => {
-        console.log(todos);
-    }, [todos]);
 
     const isEmpty = (todos: ITodo[]) => {
         return todos.length === 0;

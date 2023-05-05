@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import classes from './navbar.module.css';
-import Modal from '../../pages/addTodoPopup/AddTodoPopup';
+import AddTodoPopup from '../../pages/addTodoPopup/AddTodoPopup';
+import { ITodo } from '../../pages/types';
 
-function Navbar(): JSX.Element {
+interface NavbarProps {
+    setTodos: (todos: ITodo[]) => void;
+}
+
+const Navbar = ({ setTodos }: NavbarProps) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const togglePopup = () => {
@@ -16,10 +21,10 @@ function Navbar(): JSX.Element {
                 <div className={classes.addTodo} onClick={togglePopup}>
                     Add TODO
                 </div>
-                {isPopupOpen && <Modal closePopup={togglePopup} />}
+                {isPopupOpen && <AddTodoPopup closePopup={togglePopup} setTodos={setTodos} />}
             </div>
         </div>
     );
-}
+};
 
 export default Navbar;

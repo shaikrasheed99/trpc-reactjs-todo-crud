@@ -2,17 +2,16 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import PriorityDropdown from '../priorityDropdown/PriorityDropdown';
 import classes from './addTodoPopup.module.css';
 import closeIcon from '../../../assets/icons/cross.png';
-import { Priority } from '../types';
-import useTodo from '../hooks/useTodo';
+import { ITodo, Priority } from '../types';
 
 interface AddTodoPopupProps {
     closePopup: () => void;
+    setTodos: (todos: ITodo[]) => void;
 }
 
-const AddTodoPopup = ({ closePopup }: AddTodoPopupProps) => {
+const AddTodoPopup = ({ closePopup, setTodos }: AddTodoPopupProps) => {
     const [description, setDescription] = useState('');
     const [priority, setPriority] = useState<Priority>(Priority.HIGH);
-    const { addTodo } = useTodo();
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setDescription(event.target.value);
@@ -24,10 +23,16 @@ const AddTodoPopup = ({ closePopup }: AddTodoPopupProps) => {
 
     const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // console.log(description);
-        // console.log(priority);
+
+        const newTodo: ITodo = {
+            id: Math.random(),
+            description,
+            priority,
+            isCompleted: false,
+        };
+
+        setTodos((previous) => [...previous, newTodo]);
         closePopup();
-        addTodo(description, priority);
     };
 
     return (

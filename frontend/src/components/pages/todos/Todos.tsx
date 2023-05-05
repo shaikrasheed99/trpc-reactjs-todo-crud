@@ -1,10 +1,22 @@
 import classes from './todos.module.css';
 import Todo from '../todo/Todo';
 import EmptyTodos from '../emptyTodos/EmptyTodos';
-import useTodo from '../hooks/useTodo';
+import { ITodo } from '../types';
 
-const Todos = () => {
-    const { todos, isEmpty, handleDelete } = useTodo();
+interface TodosProp {
+    todos: ITodo[];
+    setTodos: (todos: ITodo[]) => void;
+}
+
+const Todos = ({ todos, setTodos }: TodosProp) => {
+    const isEmpty = (todos: ITodo[]) => {
+        return todos.length === 0;
+    };
+
+    const handleDelete = (id: number) => {
+        const filteredTodos = todos.filter((todo) => todo.id != id);
+        setTodos(filteredTodos);
+    };
 
     return (
         <div className={classes.todoList}>
