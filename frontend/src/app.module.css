@@ -1,0 +1,10 @@
+.container {
+    background-color: lightslategrey;
+    max-width: 70vw;
+    height: 92vh;
+    margin: 2vw auto;
+    border-radius: 1vw;
+    box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1);
+    padding-inline: 3vw;
+    box-sizing: border-box;
+}
