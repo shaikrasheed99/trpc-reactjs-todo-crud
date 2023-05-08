@@ -1,10 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import * as trpcExpress from '@trpc/server/adapters/express';
 import { trpcRouter } from './router';
 
 const app = express();
+app.use(cors());
 dotenv.config();
 
 app.use(
