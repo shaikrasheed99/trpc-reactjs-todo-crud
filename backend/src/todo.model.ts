@@ -1,20 +1,20 @@
 import { InferSchemaType, Schema, model } from 'mongoose';
 
-const schema = new Schema({
+const todoSchema = new Schema({
     description: {
         type: String,
-        require: true,
+        required: true,
     },
     priority: {
         type: String,
-        require: true,
+        required: true,
     },
     isCompleted: {
         type: Boolean,
-        require: true,
+        required: true,
     },
 });
 
-type Todo = InferSchemaType<typeof schema>;
+type Todo = InferSchemaType<typeof todoSchema>;
 
-const Todo = model('Todo', schema);
+export const Todo = model('Todo', todoSchema);
