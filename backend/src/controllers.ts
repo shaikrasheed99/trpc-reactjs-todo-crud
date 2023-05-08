@@ -19,6 +19,12 @@ export const createTodoController = async ({ input }: { input: CreateTodoInput }
     return todo;
 };
 
+export const getTodosController = async () => {
+    const todos = await Todo.find();
+
+    return todos;
+};
+
 export const testController = () => {
     return 'Trpc test controller!!';
 };

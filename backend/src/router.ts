@@ -1,4 +1,4 @@
-import { createTodoController, testController } from './controllers';
+import { createTodoController, getTodosController, testController } from './controllers';
 import { createTodoValidationSchema } from './todo.validations';
 import { trpc } from './trpc';
 
@@ -7,6 +7,12 @@ export const trpcRouter = trpc.router({
         const response = await createTodoController({ input });
 
         return response;
+    }),
+
+    getTodos: trpc.procedure.query(async () => {
+        const todos = await getTodosController();
+
+        return todos;
     }),
 
     test: trpc.procedure.query(() => {
