@@ -1,5 +1,10 @@
-import { createTodoController, getTodosController, testController } from './controllers';
-import { createTodoValidationSchema } from './todo.validations';
+import {
+    createTodoController,
+    deleteTodoController,
+    getTodosController,
+    testController,
+} from './controllers';
+import { createTodoValidationSchema, deleteTodoValidationSchema } from './todo.validations';
 import { trpc } from './trpc';
 
 export const trpcRouter = trpc.router({
@@ -13,6 +18,12 @@ export const trpcRouter = trpc.router({
         const todos = await getTodosController();
 
         return todos;
+    }),
+
+    deleteTodo: trpc.procedure.input(deleteTodoValidationSchema).mutation(async ({ input }) => {
+        const response = await deleteTodoController({ input });
+
+        return response;
     }),
 
     test: trpc.procedure.query(() => {

@@ -16,13 +16,15 @@ const Todos = () => {
         };
 
         todosFromServer();
-    });
+    }, []);
 
     const isEmpty = (todos: ITodo[]) => {
         return todos.length === 0;
     };
 
-    const handleDelete = (id: number) => {
+    const handleDelete = async (id: number) => {
+        await trpc.deleteTodo.mutate({ id });
+
         const filteredTodos = todos.filter((todo: ITodo) => todo.id != id);
         setTodos(filteredTodos);
     };
