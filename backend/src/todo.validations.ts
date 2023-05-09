@@ -1,6 +1,9 @@
 import z from 'zod';
 
 export const createTodoValidationSchema = z.object({
+    id: z.number({
+        required_error: 'Todo id is required',
+    }),
     description: z.string({
         required_error: 'Description is required',
     }),
@@ -12,4 +15,11 @@ export const createTodoValidationSchema = z.object({
     }),
 });
 
+export const deleteTodoValidationSchema = z.object({
+    id: z.number({
+        required_error: 'Todo id is required',
+    }),
+});
+
 export type CreateTodoInput = z.TypeOf<typeof createTodoValidationSchema>;
+export type DeleteTodoInput = z.TypeOf<typeof deleteTodoValidationSchema>;

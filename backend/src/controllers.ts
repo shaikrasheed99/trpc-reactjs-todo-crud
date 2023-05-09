@@ -1,7 +1,8 @@
 import { Todo } from './todo.model';
-import { CreateTodoInput } from './todo.validations';
+import { CreateTodoInput, DeleteTodoInput } from './todo.validations';
 
 interface Todo {
+    id: number;
     description: string;
     priority: string;
     isCompleted: boolean;
@@ -9,6 +10,7 @@ interface Todo {
 
 export const createTodoController = async ({ input }: { input: CreateTodoInput }) => {
     const todo: Todo = {
+        id: input.id,
         description: input.description,
         priority: input.priority,
         isCompleted: input.isCompleted,
@@ -23,6 +25,12 @@ export const getTodosController = async () => {
     const todos = await Todo.find();
 
     return todos;
+};
+
+export const deleteTodoController = async ({ input }: { input: DeleteTodoInput }) => {
+    await Todo.deleteOne({ id: input.id });
+
+    return 'Deleted successfully';
 };
 
 export const testController = () => {

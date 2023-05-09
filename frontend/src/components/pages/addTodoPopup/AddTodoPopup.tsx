@@ -22,7 +22,8 @@ const AddTodoPopup = ({ closePopup }: AddTodoPopupProps) => {
     };
 
     const sendTodoToServer = async () => {
-        await trpc.createTodo.mutate({ description, priority, isCompleted: false });
+        const id = Math.floor(Math.random() * 899999 + 100000);
+        await trpc.createTodo.mutate({ id, description, priority, isCompleted: false });
     };
 
     const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {

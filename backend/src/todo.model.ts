@@ -1,6 +1,10 @@
 import { InferSchemaType, Schema, model } from 'mongoose';
 
 const todoSchema = new Schema({
+    id: {
+        type: Number,
+        required: true,
+    },
     description: {
         type: String,
         required: true,
