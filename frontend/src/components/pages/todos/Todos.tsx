@@ -2,22 +2,14 @@ import classes from './todos.module.css';
 import Todo from '../todo/Todo';
 import EmptyTodos from '../emptyTodos/EmptyTodos';
 import { ITodo } from '../types';
-import { useState, useEffect } from 'react';
 import { trpc } from '../../../App';
 
-const Todos = () => {
-    const [todos, setTodos] = useState<ITodo[]>([]);
+interface TodosProps {
+    todos: ITodo[];
+    setTodos: (todos: ITodo[]) => void;
+}
 
-    useEffect(() => {
-        const todosFromServer = async () => {
-            const todos = await trpc.getTodos.query();
-
-            setTodos(todos as ITodo[]);
-        };
-
-        todosFromServer();
-    }, []);
-
+const Todos = ({ todos, setTodos }: TodosProps) => {
     const isEmpty = (todos: ITodo[]) => {
         return todos.length === 0;
     };

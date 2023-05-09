@@ -2,14 +2,15 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import PriorityDropdown from '../priorityDropdown/PriorityDropdown';
 import classes from './addTodoPopup.module.css';
 import closeIcon from '../../../assets/icons/cross.png';
-import { Priority } from '../types';
+import { ITodo, Priority } from '../types';
 import { trpc } from '../../../App';
 
 interface AddTodoPopupProps {
     closePopup: () => void;
+    setTodos: (todos: ITodo[]) => void;
 }
 
-const AddTodoPopup = ({ closePopup }: AddTodoPopupProps) => {
+const AddTodoPopup = ({ closePopup, setTodos }: AddTodoPopupProps) => {
     const [description, setDescription] = useState('');
     const [priority, setPriority] = useState<Priority>(Priority.HIGH);
 
@@ -23,7 +24,16 @@ const AddTodoPopup = ({ closePopup }: AddTodoPopupProps) => {
 
     const sendTodoToServer = async () => {
         const id = Math.floor(Math.random() * 899999 + 100000);
-        await trpc.createTodo.mutate({ id, description, priority, isCompleted: false });
+        const newTodo: ITodo = {
+            id,
+            description,
+            priority,
+            isCompleted: false,
+        };
+
+        await trpc.createTodo.mutate(newTodo);
+
+        setTodos((previous) => [...previous, newTodo]);
     };
 
     const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
