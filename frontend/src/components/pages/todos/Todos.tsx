@@ -1,6 +1,5 @@
 import classes from './todos.module.css';
 import Todo from '../todo/Todo';
-import EmptyTodos from '../emptyTodos/EmptyTodos';
 import { ITodo } from '../types';
 import { trpc } from '../../../App';
 
@@ -10,10 +9,6 @@ interface TodosProps {
 }
 
 const Todos = ({ todos, setTodos }: TodosProps) => {
-    const isEmpty = (todos: ITodo[]) => {
-        return todos.length === 0;
-    };
-
     const handleDelete = async (id: number) => {
         await trpc.deleteTodo.mutate({ id });
 
@@ -23,11 +18,9 @@ const Todos = ({ todos, setTodos }: TodosProps) => {
 
     return (
         <div className={classes.todoList}>
-            {isEmpty(todos) ? (
-                <EmptyTodos />
-            ) : (
-                todos.map((todo) => <Todo todo={todo} handleDelete={handleDelete} key={todo.id} />)
-            )}
+            {todos.map((todo) => (
+                <Todo todo={todo} handleDelete={handleDelete} key={todo.id} />
+            ))}
         </div>
     );
 };

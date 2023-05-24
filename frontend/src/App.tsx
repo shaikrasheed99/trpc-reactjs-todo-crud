@@ -5,6 +5,7 @@ import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
 import type { TRPCRouter } from '../../backend/src/router';
 import { useEffect, useState } from 'react';
 import { ITodo } from './components/pages/types';
+import Loader from './components/layouts/loader/Loader';
 
 const TRPC_ENDPOINT = 'http://localhost:3000/trpc/';
 
@@ -18,12 +19,15 @@ export const trpc = createTRPCProxyClient<TRPCRouter>({
 
 const App = () => {
     const [todos, setTodos] = useState<ITodo[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const todosFromServer = async () => {
+            setIsLoading(true);
             const todos = await trpc.getTodos.query();
 
             setTodos(todos as ITodo[]);
+            setIsLoading(false);
         };
 
         todosFromServer();
@@ -32,7 +36,7 @@ const App = () => {
     return (
         <div className={classes.container}>
             <Navbar setTodos={setTodos} />
-            <Todos todos={todos} setTodos={setTodos} />
+            {isLoading ? <Loader /> : <Todos todos={todos} setTodos={setTodos} />}
         </div>
     );
 };
